@@ -18,12 +18,9 @@ int jumlah;
 int bahasa;
 int donasikan;
 int perubahan;
-int pass = 1234;
-int z2;
 
 };
 
-//PROTOTYPE
 database a;
 int akhir(struct database);
 int fungsi();
@@ -35,7 +32,6 @@ int donasi(struct database);
 int donation(struct database);
 int ukuranml1 (struct database);
 void admin(struct database);
-//PROTOTYPE
 
 int main(){
 
@@ -48,14 +44,11 @@ return 0;
 
 void admin(struct database){
 cout << "==============================================================================" << endl <<endl;
-awal:
+
     cout << "1.admin\n2.user" << endl;
-    cout << "Anda akan masuk sebagai apa?: "; cin >> a.pilihan;
-        if (a.pilihan == 1) {
-            do{
-            cout << "Masukkan sandi: ";cin >> a.z2;
-                if(a.z2 == a.pass){
-                cout << "1.Harga Normal Botol Kaca(4500)\n2.Harga Normal Botol Plastik(2500)\n3.bonus awal(1000)\n4.kembali" << endl;
+    cout << "Anda akan masuk sebagai apa?: ";cin >> a.pilihan;
+        if (a.pilihan == 1){
+            cout << "1.Harga Normal Botol Kaca(4500)\n2.Harga Normal Botol Plastik(2500)\n3.bonus awal(1000)\n4.kembali" << endl;
             cout << "apa yang anda ingin ubah? ";cin >> a.pilihan;
                 if(a.pilihan == 1){
                     a.harga_normal[0];
@@ -73,13 +66,8 @@ awal:
                     a.bonus[0] = a.perubahan;
                     admin (a);
                 }else if (a.pilihan == 4){
-                    goto awal;
+                    admin(a);
                 }
-                }else {
-                    cout << "pass salah"<< endl;
-                }
-            }while(a.z2 != a.pass);
-
         }else if (a.pilihan == 2){
 
         }else{
@@ -91,6 +79,7 @@ awal:
 
 int fungsi(){
 
+cout << "==============================================================================" << endl <<endl;
     cout << "======DISPLAY======\n" <<"Ketentuan:\nBotol yang anda dapat masukkan:" << endl;
     cout << "1.Botol Kaca "<< a.harga_normal[0] <<"\n2.Botol Plastik " << a.harga_normal[1] <<endl;
     cout << "Masukkan Pilihan anda(1/2): "; cin >> a.pilihan;
@@ -101,10 +90,7 @@ cout << "\n=====================================================================
     cout << "apakah ingin menambah botol(y/n): ";cin >> a.yn;
         if (a.yn == 'y'||a.yn =='Y'){
     return fungsi();
-        }else if (a.yn == 'n' || a.yn == 'N'){
-            return 0;
         }
-
 
     }else if (a.pilihan == 2){
     gelasplastik(a);
@@ -129,11 +115,10 @@ int fungsi2(){
 
 
 do{
-
     cout << "======DISPLAY======\n" <<"conditions:\nBottles you can put in:" << endl;
     cout << "1.glass bottle "<< a.harga_normal[0] <<"\n2.plastic bottle " << a.harga_normal[1] <<endl;
     cout << "Input yout choice(1/2): "; cin >> a.pilihan;
-  cout << "\n==============================================================================" << endl;
+    cout << "=============================================" << endl;
 
 
     if (a.pilihan == 1){
@@ -141,20 +126,19 @@ do{
         a.jumlah;
             cout << "con:if the bottle size 350ml, the price is normal .\n"
             << "     but if the size of the bottle more than 350ml bonus 1k." << endl;
-             cout << "\n==============================================================================" << endl;
+            cout << "=============================================" << endl;
             cout << "Input amount of bottles: ";cin >> a.jumlah;
             cout << "input size of the bottle(ml): "; cin >> a.ukuran;
 
                 if (a.ukuran > 350){
-                a.total2 = (a.bonus[0]*a.jumlah) + (a.harga_normal[0] * a.jumlah);
-                cout << "\n==============================================================================" << endl;
+                a.total = (a.bonus[0]*a.jumlah) + (a.harga_normal[0] * a.jumlah);
                 cout << "bonus: "<< a.bonus[0] << endl;
-                         cout << "uang yang di tukarkan: " << a.total2 << endl;
+                         cout << "uang yang di tukarkan: " << a.total << endl;
                             donation(a);
 
                 }else if(a.ukuran > 0 && a.ukuran <= 350){
-                a.total2 = a.harga_normal[0] * a.jumlah;
-                 cout << "uang yang di tukarkan: " << a.total2 << endl;
+                a.total = a.harga_normal[0] * a.jumlah;
+                 cout << "uang yang di tukarkan: " << a.total << endl;
                 donation(a);
 
                 }else{
@@ -168,7 +152,7 @@ do{
                 << "     but if the bottle available the recyke logo/emblem bonus 1k." << endl;
                 cout << "con: if the bottle size 350ml or under normal prize.\n"
                 << "     but if the bottle size more than 350ml bonus 1k." << endl;
-                 cout << "\n==============================================================================" << endl;
+                cout << "=============================================" << endl;
                 cout << "input the amount of the bottles: ";cin >> a.jumlah;
                 cout << "are the bottles available for the recyle logo/emblem(y/n): ";cin >> a.yn;
 
@@ -228,10 +212,8 @@ return 0;
 
 int akhir(struct database){
     admin(a);
-awal:
-cout << "\t\t\t\tWELCOME TO\n\t\t\t\tBottleMine" << endl;
-cout << "==============================================================================" << endl <<endl;
-cout << "\t\t\t\t1.Indonesia\n\t\t\t\t2.english\n\t\t\t\tinput language options: "; cin >> a.bahasa;
+cout << "\b\bWELCOME TO\nBottleMine" << endl;
+cout << "1.Indonesia\n2.english\ninput language options: "; cin >> a.bahasa;
         if(a.bahasa == 1){
             fungsi();
             cout << "++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -244,10 +226,6 @@ cout << "\t\t\t\t1.Indonesia\n\t\t\t\t2.english\n\t\t\t\tinput language options:
             cout << "\nRedeem your last bill to cashier\n\nThank you Stay green:)\n" << endl;
             cout << "++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
             return 0;
-        }else {
-
-            cout << "input salah masukan ulang" << endl;
-            goto awal;
         }
 
 
@@ -393,3 +371,4 @@ int donation(struct database){
         }
 
 }
+
